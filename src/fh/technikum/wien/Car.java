@@ -8,18 +8,20 @@ public class Car {
 	private double km;
 	private int hoursepower;
 	private double costs;
-
-	public Car(String brand, String licenseplate, double km, int hoursepower, double costs) {
+	private boolean rent;
+	
+	public Car(String brand, String licenseplate, double km, int hoursepower, double costs, boolean rent) {
 		super();
 		this.brand = brand;
 		this.licenseplate = licenseplate;
 		this.km = km;
 		this.hoursepower = hoursepower;
 		this.costs = costs;
+		this.rent = rent;
 	}
 
 	public Car(int id, String brand, String licenseplate, double km,
-			int hoursepower, double costs) {
+			int hoursepower, double costs, boolean rent) {
 		super();
 		this.id = id;
 		this.brand = brand;
@@ -27,13 +29,14 @@ public class Car {
 		this.km = km;
 		this.hoursepower = hoursepower;
 		this.costs = costs;
+		this.rent = rent;
 	}
 
 	@Override
 	public String toString() {
 		return "Car [id=" + id + ", brand=" + brand + ", licenseplate="
 				+ licenseplate + ", km=" + km + ", hoursepower=" + hoursepower
-				+ "]";
+				+ ", costs=" + costs + ", rented=" + rent + "]";
 	}
 
 	public Integer getId() {
@@ -82,5 +85,13 @@ public class Car {
 
 	public void setCosts(double costs) {
 		this.costs = costs;
+	}
+
+	public boolean getRent() {
+		return rent;
+	}
+
+	public void setRent(boolean rent) {
+		this.rent = rent;
 	}
 }
