@@ -48,15 +48,20 @@ public class CarServlet {
 	}
 	
 	@Path("{id}")
+	@GET
+	@Produces(MediaType.TEXT_HTML)
 	public String rentCar(@PathParam("id") int id) {
 		for (Car i : carlist) {
 			if (i.getId() == id) {
+				if (i.getRent() == false ) {
+					return "<html><body><p><b>Rented car not available</b></p></body></html>";
+				}
 				i.setRent(false);
-				return "<html><body><b><p>" + "Rented car with ID: " + i.getId() + " and model " + i.getBrand()
-						+"</p></b></body></html>";
+				return "<html><body><b><p>" + "Rented the car with ID: " + i.getId() + ", model " + i.getBrand()
+						+ ", licenseplate: "+ i.getLicenseplate() + ", driven kilometers: "+ i.getKm() + 
+						" hoursepower: " + i.getHoursepower() + " and costs per hour: " + i.getCosts() +".</p></b></body></html>";
 			}
 		}
-		//return carlist.toString();
 		return "";
 	}
 }
