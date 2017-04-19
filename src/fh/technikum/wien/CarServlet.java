@@ -20,6 +20,11 @@ public class CarServlet {
 		add(new Car(5, "Jeep", "MI 11234A", 30748.0, 100, 18.8, true));
 	}};
 	
+	/*DynamicClientFactory dcf = DynamicClientFactory.newInstance();
+	Client client = dcf.createClient("http://elon:musk@localhost:5000"+
+	                                 "/exchange/getAll");
+	Object[] a = client.invoke("test", "");*/
+	
 	@GET
 	@Produces(MediaType.TEXT_HTML)
 	public String getAvailableCars() {
@@ -60,6 +65,21 @@ public class CarServlet {
 				return "<html><body><b><p>" + "Rented the car with ID: " + i.getId() + ", model " + i.getBrand()
 						+ ", licenseplate: "+ i.getLicenseplate() + ", driven kilometers: "+ i.getKm() + 
 						" hoursepower: " + i.getHoursepower() + " and costs per hour: " + i.getCosts() +".</p></b></body></html>";
+			}
+		}
+		return "";
+	}
+	
+	@Path("/return/{id}")
+	@GET
+	@Produces(MediaType.TEXT_HTML)
+	public String returnCar(@PathParam("id") int id) {
+		for (Car i : carlist) {
+			if (i.getId() == id) {
+				if (i.getRent() == false ) {
+					i.setRent(true);
+					return "<html><body><p><b>Successfully return car with ID " + i.getId() + "</b></p></body></html>";
+				}
 			}
 		}
 		return "";

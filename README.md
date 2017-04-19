@@ -19,6 +19,8 @@ Konfiguration:
 - Starten des Tomcat-Servers
 - Abfrage verfügbarer Autos über localhost:8080/CarRentalService/rest/car
 - Buchen von Autos mittels ID (Auto muss Flag "true" haben): localhost:8080/CarRentalService/rest/car/5
+- falls Auto schon gebucht wurde, z.B.: localhost:8080/CarRentalService/rest/car/5 dann kommt eine Fehlermeldung
+- Retournieren eines Autos mittels: http://localhost:8080/CarRentalService/rest/car/return/5
 - Basic Auhtorization Usage: ARC (Advanced REST Client) https://chrome.google.com/webstore/detail/advanced-rest-client/hgmloofddffdnphfgcellkdfbfbjeloo
 - ARC Request absenden: localhost:8080/CarRentalService/rest/car + Headers form "Authorization" + User name: "elon" + Password: "musk", Abschluss mit "Select"
 - Alternative: Extension ModHeader https://chrome.google.com/webstore/detail/modheader/idgpnmonknjnojddfkpgkljpfnnfcklj/related --> Name: "Authorization" - Value: "Basic ZWxvbjptdXNr" 
